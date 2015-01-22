@@ -6,6 +6,7 @@
 </head>
 <body>
     <h3>Login successful!!!</h3>
+	<h3>or was it....? Yes, it was...</h3>
     <h4>
         Hello,
         <%=session.getAttribute("name")%></h4>
