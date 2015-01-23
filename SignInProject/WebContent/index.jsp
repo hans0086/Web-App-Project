@@ -13,6 +13,7 @@
 			<input type="text" name="username" required="required" placeholder="User Name" />
 			<input type="password" name="userpass" required="required" placeholder="Password" />
 			<button type="submit" value="Login">LOGIN</button>
+<<<<<<< HEAD
 			<%if(request.getAttribute("error") != null){
 				out.print("<div class=\"error\">Sorry, username or password incorrect</div>");
 			} else{
@@ -20,6 +21,8 @@
 			}
 			
 			%>
+=======
+>>>>>>> branch 'master' of https://github.com/hans0086/Web-App-Project
 		</form>
 		<h2>
 			<a href='#'>Create Account</a>
