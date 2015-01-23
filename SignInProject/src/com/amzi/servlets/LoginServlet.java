@@ -2,6 +2,8 @@ package com.amzi.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,6 +26,8 @@ public class LoginServlet extends HttpServlet {
 		String n = request.getParameter("username");
 		String p = request.getParameter("userpass");
 		HttpSession session = request.getSession(false);
+		
+		
 		if (session != null)
 			session.setAttribute("name", n);
 
@@ -31,7 +35,9 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
 			rd.forward(request, response);
 		} else {
-			out.print("<p style=\"color:red\">Sorry username or password error</p>");
+			request.setAttribute("error", "Error: Username or Password incorrect");
+			
+			
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.include(request, response);
 		}

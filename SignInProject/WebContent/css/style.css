@@ -88,5 +88,10 @@ a:hover {
   color: #c0392b;
 }
 
+.error{
+	color: red;
+	font: 12px Helvetica;
+	margin: 1px auto;
+}
 
 
