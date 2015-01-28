@@ -54,7 +54,7 @@
 					<td><input type="text" name="userPhone" required="required" /></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Login" /></td>
+					<td><input type="submit" value="Create Account" /></td>
 				</tr>
 			</table>
 		</fieldset>

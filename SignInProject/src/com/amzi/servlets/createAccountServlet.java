@@ -112,7 +112,7 @@ public class createAccountServlet extends HttpServlet {
 				//pw.println("<font size='6' color=blue>" + msg + "</font>");
 				if (session != null)
 					session.setAttribute("username", username);
-				RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 				rd.forward(request, response);
 
 			} else {
