@@ -22,7 +22,7 @@ public class LoginDao {
 			Class.forName(driver).newInstance();
 			conn = DriverManager.getConnection(url + dbName, userName, password);
 
-			pst = conn.prepareStatement("select * from login where user=? and password=?");
+			pst = conn.prepareStatement("select * from gaming.users where username=? and userpass=?");
 			pst.setString(1, name);
 			pst.setString(2, pass);
 			rs = pst.executeQuery();
