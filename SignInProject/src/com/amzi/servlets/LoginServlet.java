@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.amzi.dao.LoginAdminDao;
 import com.amzi.dao.LoginDao;
 
 public class LoginServlet extends HttpServlet {
@@ -24,17 +25,21 @@ public class LoginServlet extends HttpServlet {
 		String n = request.getParameter("username");
 		String p = request.getParameter("userpass");
 		HttpSession session = request.getSession(false);
-		
+		RequestDispatcher rd;
 		
 		if (session != null)
 			session.setAttribute("name", n);
 
 		if (LoginDao.validate(n, p)) {
-			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+			if (LoginAdminDao.validate(n, p).equals("yes")) {
+				rd = request.getRequestDispatcher("admin.jsp");
+			}
+			else
+				rd = request.getRequestDispatcher("welcome.jsp");
 			rd.forward(request, response);
 		} else {
 			request.setAttribute("error", "Error: Username or Password incorrect");
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd = request.getRequestDispatcher("index.jsp");
 			rd.include(request, response);
 		}
 

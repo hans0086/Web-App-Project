@@ -71,7 +71,7 @@ public class createAccountServlet extends HttpServlet {
 			conn = (Connection) DriverManager.getConnection(url + dbName, "root", "BlackSox2012");
 
 			PreparedStatement pst = (PreparedStatement)conn
-					.prepareStatement("INSERT INTO gaming.users(username,userpass,userFirstName,userLastName,userAddress,userCountry,userCity,userPostalCode,userEmail,userPhone) values('"
+					.prepareStatement("INSERT INTO gaming.users(username,userpass,userFirstName,userLastName,userAddress,userCountry,userCity,userPostalCode,userEmail,userPhone,userIsAdmin) values('"
 							+ username
 							+ "' ,'"
 							+ userpass
@@ -91,7 +91,7 @@ public class createAccountServlet extends HttpServlet {
 							+ email
 							+ "','"
 							+ phone
-							+ "')");// try2 is the name of the table
+							+ "', 'no')");// try2 is the name of the table
 
 			// pst.setString(1,username);
 			// pst.setString(2,userpass);
