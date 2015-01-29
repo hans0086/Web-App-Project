@@ -13,12 +13,11 @@
 			<input type="text" name="username" required="required" placeholder="User Name" />
 			<input type="password" name="userpass" required="required" placeholder="Password" />
 			<button type="submit" value="Login">LOGIN</button>
-			<%if(request.getAttribute("error") != null){
+			<%if(request.getAttribute("error") != null){ //If error attrubite exists, alert user to bad user/pw combo
 				out.print("<div class=\"error\">Sorry, username or password incorrect</div>");
 			} else{
 				out.print("<div class=\"error\"></div>");
 			}
-			
 			%>
 		</form>
 		<h2>
