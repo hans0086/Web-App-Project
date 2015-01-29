@@ -6,6 +6,7 @@
 body {
 	font: 16px Helvetica;
 	background: #1d6fa5;
+	overflow-y: scroll;
 }
 
 section {
