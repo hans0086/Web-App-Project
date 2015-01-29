@@ -25,7 +25,7 @@ public class LoginAdminDao {
 		Connection conn = null; // a connection to the database
 		PreparedStatement pst = null; // the SQL statement executed on the database
 		ResultSet rs = null; // the results of the database query
-		String userAdmin = null; // determines if the user is an Administrator
+		String userAdmin = "no"; // determines if the user is an Administrator
 
 		String url = "jdbc:mysql://localhost:3306/"; // the location of the database
 		String dbName = "gaming"; // the database to execute the query on
