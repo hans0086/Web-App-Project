@@ -17,10 +17,10 @@ public class LoginAdminDao {
 		String userAdmin = null;
 
 		String url = "jdbc:mysql://localhost:3306/";
-		String dbName = "form";
+		String dbName = "gaming";
 		String driver = "com.mysql.jdbc.Driver";
 		String userName = "root";
-		String password = "BlackSox2012";
+		String password = "12345";
 		try {
 			Class.forName(driver).newInstance();
 			conn = DriverManager.getConnection(url + dbName, userName, password);
