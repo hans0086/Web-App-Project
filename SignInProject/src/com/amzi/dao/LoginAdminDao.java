@@ -17,7 +17,7 @@ public class LoginAdminDao {
 		String userAdmin = null;
 
 		String url = "jdbc:mysql://localhost:3306/";
-		String dbName = "form";
+		String dbName = "gaming";
 		String driver = "com.mysql.jdbc.Driver";
 		String userName = "root";
 		String password = "yA600260";
