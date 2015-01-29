@@ -45,15 +45,11 @@ public class createAccountServlet extends HttpServlet {
 			IOException {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
-		// String connectionURL = "jdbc:mysql://127.0.0.1:3306/newData"; //newData is the database
-		// Connection connection;
 		Connection conn = null;
 		String url = "jdbc:mysql://localhost:3306/";
 		String dbName = "gaming";
 		String driver = "com.mysql.jdbc.Driver";
 		HttpSession session = request.getSession(false);
-		// String dbUserName = "root";
-		// String dbPassword = "root";
 
 		try {
 			String username = request.getParameter("username");
@@ -92,17 +88,6 @@ public class createAccountServlet extends HttpServlet {
 							+ "','"
 							+ phone
 							+ "', 'no')");// try2 is the name of the table
-
-			// pst.setString(1,username);
-			// pst.setString(2,userpass);
-			// pst.setString(3,firstName);
-			// pst.setString(4,lastName);
-			// pst.setString(5,address);
-			// pst.setString(6,country);
-			// pst.setString(7,city);
-			// pst.setString(8,postalCode);
-			// pst.setString(9,email);
-			// pst.setString(10, phone);
 
 			int i = pst.executeUpdate();
 			conn.close();

@@ -47,7 +47,7 @@
                       });   
                   }  
                   else{  
-                      $(".status").html("<font color=red>Username too short</font>"); // Otherwise alt
+                      $(".status").html("<font color=red>Username too short</font>"); // Otherwise alert if username is too short
                   }    
               });  
           });  
