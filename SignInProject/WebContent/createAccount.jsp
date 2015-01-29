@@ -10,9 +10,10 @@
     <section>
         <span></span>
         <h1>Create User Account</h1>
+        <!-- Form to allow for the creation of a use account -->
         <form action="createAccountServlet" method="post">
             <input type="text" name="username" class="uname" required="required" placeholder="User Name" />
-            <div class="status"></div>
+            <div class="status"></div> <!-- Used by AJAX function to show loader gif -->
             <input type="password" name="userpass" required="required" placeholder="Password" />
             <input type="text" name="userFirstName" required="required" placeholder="First Name" />
             <input type="text" name="userLastName" required="required" placeholder="Last Name" />
@@ -28,14 +29,14 @@
 </body>
 
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-
- <script type="text/javascript">  
+<script type="text/javascript">  
+ <!-- AJAX Function to check if the username is already in use. THIS FUNCTION IS NOT FUNCTIONAL YET -->
           $(document).ready(function(){
               $(".uname").change(function(){
                   var uname = $(this).val();
                   if(uname.length >= 3){  
-                      $(".status").html("<img src='./img/loader.gif'>");  
-                       $.ajax({  
+                      $(".status").html("<img src='./img/loader.gif'>"); // Show the loader .gif
+                       $.ajax({ // Make the AJAX call
                           type: "POST",  
                           url: "check",  
                           data: "username="+ uname,  
@@ -47,7 +48,7 @@
                       });   
                   }  
                   else{  
-                      $(".status").html("<font color=red>Username too short</font>");
+                      $(".status").html("<font color=red>Username too short</font>"); // Otherwise alert if username is too short
                   }    
               });  
           });  
