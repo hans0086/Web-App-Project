@@ -28,14 +28,12 @@ public class createAccountServlet extends HttpServlet {
 	 */
 	public createAccountServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -93,8 +91,6 @@ public class createAccountServlet extends HttpServlet {
 			conn.close();
 			String msg = " ";
 			if (i != 0) {
-				//msg = "Record has been inserted";
-				//pw.println("<font size='6' color=blue>" + msg + "</font>");
 				if (session != null)
 					session.setAttribute("username", username);
 				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
