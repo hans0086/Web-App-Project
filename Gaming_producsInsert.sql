@@ -6,7 +6,7 @@ INSERT INTO `gaming`.`products`
 `productPrice`)
 VALUES
 (
-'Super Mario Bros.',
-'Wii U',
-'30',
-'59.99');
+'Super Mario Galaxy',
+'Wii',
+'5',
+'19.99');

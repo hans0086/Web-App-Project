@@ -12,6 +12,8 @@
     <h2>
         Hello, <%=session.getAttribute("name")%>
 	</h2>
+	<br />
+	<a href='catalog.jsp'>Catalog</a>
 </section>
 </body>
 </html>
