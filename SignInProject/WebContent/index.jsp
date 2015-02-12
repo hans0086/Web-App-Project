@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="com" />
+<html lang="${language}">
 <link rel="stylesheet" href="css/style.css" media="screen" type="text/css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -9,7 +14,12 @@
 	<section>
 		<span></span>
 		<h1>Member Login</h1>
+		<select id="language" name="language" onchange="submit()">
+                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+                <option value="fr" ${language == 'fr' ? 'selected' : ''}>French</option>
+            </select>
 		<form action="loginServlet" method="post">
+		<label for="username"><fmt:message key="login.label.username"/></label>
 			<input type="text" name="username" required="required" placeholder="User Name" />
 			<input type="password" name="userpass" required="required" placeholder="Password" />
 			<button type="submit" value="Login">LOGIN</button>

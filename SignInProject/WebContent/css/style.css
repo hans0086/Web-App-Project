@@ -10,7 +10,7 @@ body {
 }
 
 section {
-	width: 300px;
+	width: 400px;
 	background: #ecf0f1;
 	padding: 0 30px 30px 30px;
 	margin: 60px auto;
@@ -78,7 +78,9 @@ button:hover {
 h2 {
 	font-size: .75em;
 }
-
+h3 {
+	font-size: 14px;
+}
 a {
 	color: 2980B9;
 	text-decoration: none;
@@ -93,4 +95,24 @@ a:hover {
 	color: red;
 	font: 12px Helvetica;
 	margin: 1px auto;
+}
+
+table {
+	width: 100%;
+	border: 1px;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+table.th {
+	font-weight: 100;
+	font-size: .5em;
+}
+
+table.td {
+    padding: 10px 0; /* 10px top & bottom padding, 0px left & right */
+}
+
+.separating_line {
+    border-top: 1px #000 solid; /* top border only */
 }

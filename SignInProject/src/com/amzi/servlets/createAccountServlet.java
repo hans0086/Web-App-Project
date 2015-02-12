@@ -28,14 +28,12 @@ public class createAccountServlet extends HttpServlet {
 	 */
 	public createAccountServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -45,30 +43,26 @@ public class createAccountServlet extends HttpServlet {
 			IOException {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
-		// String connectionURL = "jdbc:mysql://127.0.0.1:3306/newData"; //newData is the database
-		// Connection connection;
 		Connection conn = null;
 		String url = "jdbc:mysql://localhost:3306/";
 		String dbName = "gaming";
 		String driver = "com.mysql.jdbc.Driver";
 		HttpSession session = request.getSession(false);
-		// String dbUserName = "root";
-		// String dbPassword = "root";
 
 		try {
-			String username = request.getParameter("username");
-			String userpass = request.getParameter("userpass");
-			String firstName = request.getParameter("userFirstName");
-			String lastName = request.getParameter("userLastName");
-			String address = request.getParameter("userAddress");
-			String country = request.getParameter("userCountry");
-			String city = request.getParameter("userCity");
-			String postalCode = request.getParameter("userPostalCode");
-			String email = request.getParameter("userEmail");
-			String phone = request.getParameter("userPhone");
+			String username = request.getParameter("username");//get the username from the username field
+			String userpass = request.getParameter("userpass");//get the password from the password field
+			String firstName = request.getParameter("userFirstName");//get the First Name from the First Name field
+			String lastName = request.getParameter("userLastName");//get the Last Name from the last name field
+			String address = request.getParameter("userAddress");//get the address from the address field
+			String country = request.getParameter("userCountry");//get the country from the country field
+			String city = request.getParameter("userCity");//get the city from the city field
+			String postalCode = request.getParameter("userPostalCode");//get the postal code from the postal code field
+			String email = request.getParameter("userEmail");//get the email from the email field
+			String phone = request.getParameter("userPhone");// get the phone # from the phone @ field
 
 			Class.forName(driver).newInstance();
-			conn = (Connection) DriverManager.getConnection(url + dbName, "root", "12345");
+			conn = (Connection) DriverManager.getConnection(url + dbName, "root", "Mat20134");//create a connection to the database
 
 			PreparedStatement pst = (PreparedStatement)conn
 					.prepareStatement("INSERT INTO gaming.users(username,userpass,userFirstName,userLastName,userAddress,userCountry,userCity,userPostalCode,userEmail,userPhone,userIsAdmin) values('"
@@ -91,31 +85,18 @@ public class createAccountServlet extends HttpServlet {
 							+ email
 							+ "','"
 							+ phone
-							+ "', 'no')");// try2 is the name of the table
-
-			// pst.setString(1,username);
-			// pst.setString(2,userpass);
-			// pst.setString(3,firstName);
-			// pst.setString(4,lastName);
-			// pst.setString(5,address);
-			// pst.setString(6,country);
-			// pst.setString(7,city);
-			// pst.setString(8,postalCode);
-			// pst.setString(9,email);
-			// pst.setString(10, phone);
+							+ "', 'n')");// create a new record in the users table by adding the input values into their appropriate columns in the database
 
 			int i = pst.executeUpdate();
-			conn.close();
+			conn.close();//close the connection to the database
 			String msg = " ";
 			if (i != 0) {
-				//msg = "Record has been inserted";
-				//pw.println("<font size='6' color=blue>" + msg + "</font>");
 				if (session != null)
-					session.setAttribute("username", username);
-				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+					session.setAttribute("username", username);//keep the username in the session
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");//go back to the index page after creating an account
 				rd.forward(request, response);
 
-			} else {
+			} else {//if the database failed to enter the record
 				msg = "Failed to insert the data";
 				pw.println("<font size='6' color=blue>" + msg + "</font>");
 			}

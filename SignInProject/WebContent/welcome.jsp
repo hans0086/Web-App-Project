@@ -12,6 +12,11 @@
     <h2>
         Hello, <%=session.getAttribute("name")%>
 	</h2>
+	<h2>
+			<a href='catalog.jsp'>View Catalog</a>
+			<br />
+			<a href='index.jsp'>Log Out</a>
+	</h2>
 </section>
 </body>
 </html>

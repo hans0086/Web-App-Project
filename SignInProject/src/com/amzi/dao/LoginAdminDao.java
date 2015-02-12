@@ -20,7 +20,7 @@ public class LoginAdminDao {
 		String dbName = "gaming";
 		String driver = "com.mysql.jdbc.Driver";
 		String userName = "root";
-		String password = "12345";
+		String password = "Mat20134";//<--------INPUT PASSWORD HERE
 		try {
 			Class.forName(driver).newInstance();
 			conn = DriverManager.getConnection(url + dbName, userName, password);

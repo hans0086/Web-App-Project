@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("name", n);
 
 		if (LoginDao.validate(n, p)) {
-			if (LoginAdminDao.validate(n, p).equals("yes")) {
+			if (LoginAdminDao.validate(n, p).equals("y")) {
 				rd = request.getRequestDispatcher("admin.jsp");
 			}
 			else
