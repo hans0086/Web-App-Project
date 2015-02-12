@@ -17,7 +17,6 @@
                		<TH>Console</TH>
                		<TH>Available Quantity</TH>
                		<TH>Price</TH>
-
            		</TR>
 		<%
 		try{
@@ -35,24 +34,16 @@
 
         while(rs.next()){ %>
            <TR class="separating_line">
-           
                <TD> <%=rs.getString(1) %> </TD>
-               
                <TD> <%=rs.getString(2) %> </TD>
-               
                <TD> <%=rs.getString(3) %> </TD>
-               
                <TD> <%=rs.getString(4) %> </TD>
-
-           </TR>
-            
+           </TR>        
         <%}
 		
 		} catch(Exception ex){}
             %>
             </Table>
 	</section>
-	
-      
 </body>
 </html>

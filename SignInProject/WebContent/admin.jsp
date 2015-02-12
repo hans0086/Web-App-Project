@@ -13,7 +13,11 @@
         Hello, <%=session.getAttribute("name")%>
 	</h2>
 	<br />
-	<a href='addProduct.jsp'>Add Products</a>
+	<h2>
+		<a href='catalog.jsp'>Catalog</a>
+		<br />
+		<a href='addProduct.jsp'>Add A Product</a>
+	</h2>
 </section>
 </body>
 </html>
