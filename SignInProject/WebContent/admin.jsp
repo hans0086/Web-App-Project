@@ -14,7 +14,7 @@
 	</h2>
 	<br />
 	<h2>
-		<a href='catalog.jsp'>Catalog</a>
+		<a href='catalog.jsp'>View Catalog</a>
 		<br />
 		<a href='addProduct.jsp'>Add A Product</a>
 	</h2>
