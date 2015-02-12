@@ -15,7 +15,7 @@
             	<TR>
                		<TH>Product Name</TH>
                		<TH>Console</TH>
-               		<TH>Quantity Available</TH>
+               		<TH>Available Quantity</TH>
                		<TH>Price</TH>
 
            		</TR>
