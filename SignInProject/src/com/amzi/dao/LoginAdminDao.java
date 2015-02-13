@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.labels.CommonConstants;
+
 /**
  * Attempts to log into the database as an Administrator using the specified user name and password,
  * and then closes the database connection once login is complete.
@@ -31,7 +33,7 @@ public class LoginAdminDao {
 		String dbName = "gaming"; // the database to execute the query on
 		String driver = "com.mysql.jdbc.Driver"; // the database driver used to connect to the database
 		String userName = "root"; // the database user name
-		String password = "BlackSox2012"; // the database password
+		String password = CommonConstants.dbPassword; // the database password
 
 		try {
 			Class.forName(driver).newInstance(); // create a new driver class instance

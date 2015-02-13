@@ -38,9 +38,21 @@
 			<fmt:message key="login.label.selectLang" var="Lang" />${Lang}&nbsp;
 			<select id="language" name="language" onchange="submit()">
                 <option value="en" ${language == 'en' ? 'selected' : ''}>English</option> <!--  Selects English as the Language for the page -->
-                <option value="fr" ${language == 'fr' ? 'selected' : ''}>français</option> <!--  Selects French as the Language for the page -->
+                <option value="fr" ${language == 'fr' ? 'selected' : ''}>Français</option> <!--  Selects French as the Language for the page -->
             </select>
 		</h2>
 	</section>
 </body>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+	function submit(){
+		var selected = $('#language').find(":selected").val();
+		if(selected == "en") switchEn();
+		if(selected == "fr") switchFr();
+		location.reload();
+		
+		//need to make an AJAX call to set the session
+	}
+</script>
 </html>

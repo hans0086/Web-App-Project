@@ -2,7 +2,6 @@ package com.amzi.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import java.sql.DriverManager;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.labels.CommonConstants;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -62,7 +62,7 @@ public class createAccountServlet extends HttpServlet {
 			String phone = request.getParameter("userPhone");
 
 			Class.forName(driver).newInstance();
-			conn = (Connection) DriverManager.getConnection(url + dbName, "root", "BlackSox2012");
+			conn = (Connection) DriverManager.getConnection(url + dbName, "root", CommonConstants.dbPassword);
 
 			PreparedStatement pst = (PreparedStatement)conn
 					.prepareStatement("INSERT INTO gaming.users(username,userpass,userFirstName,userLastName,userAddress,userCountry,userCity,userPostalCode,userEmail,userPhone,userIsAdmin) values('"

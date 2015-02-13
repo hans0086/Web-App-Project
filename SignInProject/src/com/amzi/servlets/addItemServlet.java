@@ -2,7 +2,6 @@ package com.amzi.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import java.sql.DriverManager;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.labels.CommonConstants;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -56,7 +56,7 @@ public class addItemServlet extends HttpServlet {
 			String pPrice = request.getParameter("productPrice");//get the Last Name from the last name field
 
 			Class.forName(driver).newInstance();
-			conn = (Connection) DriverManager.getConnection(url + dbName, "root", "BlackSox2012");//create a connection to the database
+			conn = (Connection) DriverManager.getConnection(url + dbName, "root", CommonConstants.dbPassword);//create a connection to the database
 
 			PreparedStatement pst = (PreparedStatement)conn
 					.prepareStatement("INSERT INTO gaming.products(productName,productSystem,productInventory,productPrice) values('"

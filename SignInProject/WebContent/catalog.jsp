@@ -20,7 +20,6 @@
            		</TR>
 		<%
 		try{
-
 		Class.forName("com.mysql.jdbc.Driver"); 
 		String url = "jdbc:mysql://localhost:3306/"; // the location of the database
 		String dbName = "gaming"; // the database to execute the query on
@@ -28,10 +27,8 @@
 		String userName = "root"; // the database user name
 		String password = "BlackSox2012"; // the database password
 		Connection conn = DriverManager.getConnection(url + dbName, userName, password);
-
         Statement statement = conn.createStatement();
         ResultSet rs = statement.executeQuery("SELECT  productName,productSystem,productInventory,productPrice FROM gaming.products") ; 
-
         while(rs.next()){ %>
            <TR class="separating_line">
                <TD> <%=rs.getString(1) %> </TD>
