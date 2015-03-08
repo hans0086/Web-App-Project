@@ -3,26 +3,20 @@
 <link rel="stylesheet" href="css/style.css" media="screen" type="text/css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Create Account</title>
+<title>Add Product</title>
 </head>
 <body>
     <section>
         <span></span>
-        <h1>Create User Account</h1>
+        <h1>Add Product</h1>
         <!-- Form to allow for the creation of a use account -->
-        <form action="createAccountServlet" method="post">
-            <input type="text" name="username" class="uname" required="required" placeholder="User Name" />
+        <form action="addItemServlet" method="post">
+            <input type="text" name="productName" class="pName" required="required" placeholder="Product Name" />
             <div class="status"></div> <!-- Used by AJAX function to show loader gif -->
-            <input type="password" name="userpass" required="required" placeholder="Password" />
-            <input type="text" name="userFirstName" required="required" placeholder="First Name" />
-            <input type="text" name="userLastName" required="required" placeholder="Last Name" />
-            <input type="text" name="userAddress" required="required" placeholder="Address" />
-            <input type="text" name="userCity" required="required" placeholder="City" />
-            <input type="text" name="userCountry" required="required" placeholder="Country" />
-            <input type="text" name="userPostalCode" required="required" placeholder="Postal Code" />
-            <input type="text" name="userEmail" required="required" placeholder="Email" />
-            <input type="text" name="userPhone" required="required" placeholder="Phone Number" />
-            <button type="submit" value="Create Account">CREATE ACCOUNT</button>
+            <input type="text" name="productSystem" required="required" placeholder="Product System" />
+            <input type="text" name="productInventory" required="required" placeholder="Inventory" />
+            <input type="text" name="productPrice" required="required" placeholder="Price" />
+            <button type="submit" value="Create Account">ADD TO PRODUCT LIST</button>
         </form>
     </section>
 </body>
@@ -47,7 +41,7 @@
                       });   
                   }  
                   else{  
-                      $(".status").html("<font color=red>Username too short</font>"); // Otherwise alert if username is too short
+                      $(".status").html("<font color=red>Username too short</font>"); // Otherwise alt
                   }    
               });  
           });  

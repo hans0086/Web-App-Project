@@ -19,14 +19,14 @@ import com.mysql.jdbc.PreparedStatement;
 /**
  * Servlet implementation class createAccountServlet
  */
-@WebServlet("/createAccountServlet")
-public class createAccountServlet extends HttpServlet {
+@WebServlet("/addItemServlet")
+public class addItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public createAccountServlet() {
+	public addItemServlet() {
 		super();
 	}
 
@@ -50,53 +50,35 @@ public class createAccountServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 
 		try {
-			String username = request.getParameter("username");
-			String userpass = request.getParameter("userpass");
-			String firstName = request.getParameter("userFirstName");
-			String lastName = request.getParameter("userLastName");
-			String address = request.getParameter("userAddress");
-			String country = request.getParameter("userCountry");
-			String city = request.getParameter("userCity");
-			String postalCode = request.getParameter("userPostalCode");
-			String email = request.getParameter("userEmail");
-			String phone = request.getParameter("userPhone");
+			String pName = request.getParameter("productName");//get the username from the username field
+			String pSystem = request.getParameter("productSystem");//get the password from the password field
+			String pInv = request.getParameter("productInventory");//get the First Name from the First Name field
+			String pPrice = request.getParameter("productPrice");//get the Last Name from the last name field
 
 			Class.forName(driver).newInstance();
-			conn = (Connection) DriverManager.getConnection(url + dbName, "root", "Mat20134");
+			conn = (Connection) DriverManager.getConnection(url + dbName, "root", "Mat20134");//create a connection to the database
 
 			PreparedStatement pst = (PreparedStatement)conn
-					.prepareStatement("INSERT INTO gaming.users(username,userpass,userFirstName,userLastName,userAddress,userCountry,userCity,userPostalCode,userEmail,userPhone,userIsAdmin) values('"
-							+ username
+					.prepareStatement("INSERT INTO gaming.products(productName,productSystem,productInventory,productPrice) values('"
+							+ pName
 							+ "' ,'"
-							+ userpass
+							+ pSystem
 							+ "' ,'"
-							+ firstName
+							+ pInv
 							+ "','"
-							+ lastName
-							+ "','"
-							+ address
-							+ "','"
-							+ country
-							+ "','"
-							+ city
-							+ "','"
-							+ postalCode
-							+ "','"
-							+ email
-							+ "','"
-							+ phone
-							+ "', 'n')");// try2 is the name of the table
+							+ pPrice
+							+ "')");// create a new record in the users table by adding the input values into their appropriate columns in the database
 
 			int i = pst.executeUpdate();
-			conn.close();
+			conn.close();//close the connection to the database
 			String msg = " ";
 			if (i != 0) {
-				if (session != null)
-					session.setAttribute("username", username);
-				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+				if (session != null){}
+					//session.setAttribute("user", username);//keep the username in the session
+				RequestDispatcher rd = request.getRequestDispatcher("catalog.jsp");//go back to the index page after creating an account
 				rd.forward(request, response);
 
-			} else {
+			} else {//if the database failed to enter the record
 				msg = "Failed to insert the data";
 				pw.println("<font size='6' color=blue>" + msg + "</font>");
 			}

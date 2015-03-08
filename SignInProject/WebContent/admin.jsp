@@ -9,14 +9,14 @@
 <section>
 <span></span>
 	<h1>Admin Login Successful</h1>
-    
-		
-      <h2>  Hello, <%=session.getAttribute("name")%>
+    <h2>
+        Hello, <%=session.getAttribute("name")%>
 	</h2>
+	<br />
 	<h2>
-		<a href='catalog.jsp'>View Catalog</a></br>
-		<a href='addProduct.jsp'>Add Products</a></br>
-		<a href='index.jsp'>Log Out</a>
+		<a href='catalog.jsp'>View Catalog</a>
+		<br />
+		<a href='addProduct.jsp'>Add A Product</a>
 	</h2>
 </section>
 </body>
