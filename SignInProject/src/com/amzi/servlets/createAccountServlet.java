@@ -62,7 +62,7 @@ public class createAccountServlet extends HttpServlet {
 			String phone = request.getParameter("userPhone");
 
 			Class.forName(driver).newInstance();
-			conn = (Connection) DriverManager.getConnection(url + dbName, "root", "Mat20134");
+			conn = (Connection) DriverManager.getConnection(url + dbName, "root", "yA600260");
 
 			PreparedStatement pst = (PreparedStatement)conn
 					.prepareStatement("INSERT INTO gaming.users(username,userpass,userFirstName,userLastName,userAddress,userCountry,userCity,userPostalCode,userEmail,userPhone,userIsAdmin) values('"
