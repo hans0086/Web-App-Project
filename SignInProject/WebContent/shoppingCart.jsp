@@ -13,10 +13,6 @@
 <section>
 <span></span>
 	<Table>
-            	<TR>
-               		<TH>Product Name</TH>
-               		<TH>Price</TH>
-           		</TR>
 		<%
 		try{
 
@@ -31,24 +27,31 @@
 
         Statement statement = conn.createStatement();
         ResultSet rs;
-       
-       // if (searchQ == null){
-        	//searchQ = "SELECT productName, productSystem, productInventory, productPrice FROM gaming.products";
-       // }
-        
-        
-       // rs = statement.executeQuery("SELECT productName, productPrice FROM gaming.products") ; 
-	   ArrayList cart = new ArrayList();
-	   cart = (ArrayList) session.getAttribute("cartItemArray");
-	   pageContext.setAttribute("shopCart",cart);
-        %>
-        <%} catch(Exception e){}%>
-           <c:forEach items="${shopCart}" var="current">
-           	<tr>
-           		<td><c:out value="${current}" /></td>
-           		<td></td>
-           	</tr>
-           	</c:forEach>
+ 	    ArrayList<String> cart = new ArrayList<String>();
+ 	    cart = (ArrayList<String>)session.getAttribute("cartItemArray");
+        String cartStatement = "SELECT productPic,productName, productPrice FROM gaming.products ";
+        for(int i = 0;i < cart.length;i++)
+        {
+        	if(i == 0)
+        		cartStatement = cartStatement + "WHERE productName='" +cart[i]+"' ";
+        	else
+        		cartStatement = cartStatement + "OR WHERE productName='" +cart[i]+"' ";
+        		
+        }
+        rs = statement.executeQuery(cartStatement);
+        while(rs.next())
+        {%>
+        	<tr class="separating_line">
+        		<td><img src="<%=rs.getString(1)%>" height="150" width="150" vspace="10"></td>
+        	</tr>
+        	<tr class="separating_line">
+        		<td><%=rs.getString(2) %></td>
+        	</tr>
+        	<tr class="seperating_line">
+        		<td><%=rs.getString(2) %></td>
+        	</tr>
+        <%}
+       } catch(Exception e){}%>
            </Table>
 
 

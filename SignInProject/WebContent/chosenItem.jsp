@@ -26,7 +26,7 @@
         Statement statement = conn.createStatement();
         ResultSet rs;
         rs= statement.executeQuery("SELECT productPic,productDesc,productSystem,productPrice FROM gaming.products WHERE productName='"+title+"'");
-        
+       
         while(rs.next()){%>
         <tr class="separating_line">
         	<td><img src="<%=rs.getString(1)%>" height="150" width="150" vspace="10"></td>
@@ -51,8 +51,8 @@
 </body>
 <script>
 function addToCart(){
-	ArrayList cartList = new ArrayList();
-	cartList = (ArrayList) session.getAttribute("cartItemArray");
+	ArrayList<String> cartList = new ArrayList<String>();
+	cartList = (ArrayList<String>) session.getAttribute("cartItemArray");
 	cartList.add(title);
 	document.getElementById("test").set(cartList.toString());
 	session.setAttribute("cartItemArray", cartList);
