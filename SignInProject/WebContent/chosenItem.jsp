@@ -43,18 +43,14 @@
         <% } 
         %>
         <tr>
-        	<td><button id="addToCart" onClick="addToCart()" value="Add To Cart">Add To Cart</button></td>
-        	<td><label id="test"/>
+        	<td>
+        		<form action="addToCart" method="post">
+	        		<input  name="title" type="hidden" value="<%=request.getParameter("val")%>"/>
+	        		<button type="submit" value="AddToCart">Add To Cart</button>
+        		</form>
+        	</td>
         </tr>
 </table>       
 </section>
 </body>
-<script>
-function addToCart(){
-	<%ArrayList<String> cartList = new ArrayList<String>();
-	cartList = (ArrayList<String>) session.getAttribute("cartItemArray");
-	cartList.add(title);
-	session.setAttribute("cartItemArray", cartList);%>
-}
-</script>
 </html>

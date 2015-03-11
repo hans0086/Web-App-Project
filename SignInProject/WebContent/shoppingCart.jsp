@@ -11,8 +11,9 @@
 </head>
 <body>
 <section>
-<h1>Shopping Cart</h1>
 <span></span>
+	<h1>Shopping Cart</h1>
+	<a href='catalog.jsp'>Return to Catalog</a>
 	<Table>
 		<%
 		try{
@@ -30,7 +31,11 @@
         ResultSet rs;
  	    ArrayList<String> cart = new ArrayList<String>();
  	    cart = (ArrayList<String>)session.getAttribute("cartItemArray");
-        String cartStatement = "SELECT productPic,productName, productPrice FROM gaming.products ";
+ 	    String cartStatement;
+ 	    if(cart.size() > 0)
+        	cartStatement = "SELECT productPic,productName, productPrice FROM gaming.products ";
+ 	    else
+ 	    	cartStatement = "";
         for(int i = 0;i < cart.size();++i)
         {
         	if(i == 0)
@@ -47,7 +52,12 @@
         		<td><img src="<%=rs.getString(1)%>" height="150" width="150" vspace="10"></td>
         		<td><%=rs.getString(2) %></td>
         		<td><%=rs.getString(3) %></td>
-        		<td><button id="removeFromCart" name="removeFromCart" onClick="removeFromCart()" value="<%=rs.getString(1)%>">Remove</button></td>
+        		<td>
+        			<form action="RemoveFromCart" method="post">
+        				<input name="cart_id" type="hidden" value="<%=rs.getString(2)%>">
+        				<input type="submit" name="removeFromCart" value="Delete" />
+        			</form>
+        		</td>
         	</tr>
         <%}
        } catch(Exception e){}%>
@@ -56,13 +66,4 @@
 
 </section>
 </body>
-<script>
-function removeFromCart(){
-	ArrayList<String> cartList = new ArrayList<String>();
-	cartList = (ArrayList<String>) session.getAttribute("cartItemArray");
-	String title = document.getElementById('removeFromCart').value;
-	
-	session.setAttribute("cartItemArray", cartList);
-}
-</script>
 </html>

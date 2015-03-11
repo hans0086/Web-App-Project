@@ -12,16 +12,16 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 /**
- * Servlet implementation class addToCart
+ * Servlet implementation class RemoveFromCart
  */
-@WebServlet("/addToCart")
-public class addToCart extends HttpServlet {
+@WebServlet("/RemoveFromCart")
+public class RemoveFromCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public addToCart() {
+    public RemoveFromCart() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +31,23 @@ public class addToCart extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-		ArrayList<String> cartList = new ArrayList<String>();
-		cartList = (ArrayList<String>) session.getAttribute("cartItemArray");
-		cartList.add(request.getParameter("title"));
-		session.setAttribute("cartItemArray", cartList);
-		request.getRequestDispatcher("shoppingCart.jsp").forward(request, response);		
+		if (request.getParameter("removeFromCart") != null) {
+			ArrayList<String> cartList = new ArrayList<String>();
+			cartList = (ArrayList<String>)session.getAttribute("cartItemArray");
+			String value = request.getParameter("cart_id");
+			for(int i = 0;i < cartList.size();++i)
+			{
+				String cartItem = cartList.get(i);
+				if(cartItem.equals(value))
+				{
+					cartList.remove(i);
+					break;
+				}	
+			}
+			session.setAttribute("cartItemArray", cartList);			
+		}
+		
+		 request.getRequestDispatcher("shoppingCart.jsp").include(request, response);
 	}
 
 }
