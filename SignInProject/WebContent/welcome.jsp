@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="java.util.*"%>
 <html>
 <link rel="stylesheet" href="css/style.css" media="screen" type="text/css">
 <head>
@@ -17,6 +17,11 @@
 		<a href='catalog.jsp'>View Catalog</a>
 		<a href='shoppingCart.jsp'>Shopping Cart</a>
 	</h2>
+	<%if(session.getAttribute("cartItemArray") == null)
+	{
+		ArrayList<String> cartList = new ArrayList<String>();
+		session.setAttribute("cartItemArray",cartList); 
+	}%>
 </section>
 </body>
 </html>

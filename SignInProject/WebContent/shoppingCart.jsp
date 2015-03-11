@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-    <%@ page import=" java.sql.*" %>
+    <%@ page import=" java.sql.*" import="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <link rel="stylesheet" href="css/style.css" media="screen" type="text/css">
@@ -11,6 +11,7 @@
 </head>
 <body>
 <section>
+<h1>Shopping Cart</h1>
 <span></span>
 	<Table>
 		<%
@@ -30,25 +31,23 @@
  	    ArrayList<String> cart = new ArrayList<String>();
  	    cart = (ArrayList<String>)session.getAttribute("cartItemArray");
         String cartStatement = "SELECT productPic,productName, productPrice FROM gaming.products ";
-        for(int i = 0;i < cart.length;i++)
+        for(int i = 0;i < cart.size();++i)
         {
         	if(i == 0)
-        		cartStatement = cartStatement + "WHERE productName='" +cart[i]+"' ";
+        		cartStatement = cartStatement + "WHERE productName='" +cart.get(i)+"' ";
         	else
-        		cartStatement = cartStatement + "OR WHERE productName='" +cart[i]+"' ";
+        		cartStatement = cartStatement + "OR productName='" +cart.get(i)+"' ";
         		
         }
         rs = statement.executeQuery(cartStatement);
+        
         while(rs.next())
         {%>
         	<tr class="separating_line">
         		<td><img src="<%=rs.getString(1)%>" height="150" width="150" vspace="10"></td>
-        	</tr>
-        	<tr class="separating_line">
         		<td><%=rs.getString(2) %></td>
-        	</tr>
-        	<tr class="seperating_line">
-        		<td><%=rs.getString(2) %></td>
+        		<td><%=rs.getString(3) %></td>
+        		<td><button id="removeFromCart" name="removeFromCart" onClick="removeFromCart()" value="<%=rs.getString(1)%>">Remove</button></td>
         	</tr>
         <%}
        } catch(Exception e){}%>
@@ -57,4 +56,13 @@
 
 </section>
 </body>
+<script>
+function removeFromCart(){
+	ArrayList<String> cartList = new ArrayList<String>();
+	cartList = (ArrayList<String>) session.getAttribute("cartItemArray");
+	String title = document.getElementById('removeFromCart').value;
+	
+	session.setAttribute("cartItemArray", cartList);
+}
+</script>
 </html>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import=" java.sql.*" %>
+    <%@ page import=" java.sql.*" import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <link rel="stylesheet" href="css/style.css" media="screen" type="text/css">
@@ -51,11 +51,10 @@
 </body>
 <script>
 function addToCart(){
-	ArrayList<String> cartList = new ArrayList<String>();
+	<%ArrayList<String> cartList = new ArrayList<String>();
 	cartList = (ArrayList<String>) session.getAttribute("cartItemArray");
 	cartList.add(title);
-	document.getElementById("test").set(cartList.toString());
-	session.setAttribute("cartItemArray", cartList);
+	session.setAttribute("cartItemArray", cartList);%>
 }
 </script>
 </html>
