@@ -2,7 +2,6 @@
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
     <%@ page import=" java.sql.*" import="java.util.*" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <link rel="stylesheet" href="css/style.css" media="screen" type="text/css">
 <head>
@@ -23,6 +22,7 @@
 		String driver = "com.mysql.jdbc.Driver"; // the database driver used to connect to the database
 		String userName = "root"; // the database user name
 		String password = "BlackSox2012"; // the database password
+		double sub_total = 0.0;
 		//String searchQ =request.getParameter("searchAnchor");
 		Connection conn = DriverManager.getConnection(url + dbName, userName, password);
         Statement statement = conn.createStatement();
@@ -40,7 +40,11 @@
         		cartStatement = cartStatement + "WHERE productName='" +cart.get(i)+"' ";
         	else
         		cartStatement = cartStatement + "OR productName='" +cart.get(i)+"' ";
-        		
+        	
+        	rs = statement.executeQuery("SELECT productPrice FROM gaming.products WHERE productName='" +
+        									cart.get(i)+"' ");
+        	rs.next();
+        	sub_total += Double.parseDouble(rs.getString(1));
         }
         rs = statement.executeQuery(cartStatement);
         
@@ -57,11 +61,10 @@
         			</form>
         		</td>
         	</tr>
-        <%}
+        <%}%>
+       </Table>
+	   <b>Sub Total: </b><%=String.format("%1$,.2f", sub_total)%><%
        } catch(Exception e){}%>
-           </Table>
-
-
 </section>
 </body>
 </html>
