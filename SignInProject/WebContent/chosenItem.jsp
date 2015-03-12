@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import=" java.sql.*" %>
+    <%@ page import=" java.sql.*" import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <link rel="stylesheet" href="css/style.css" media="screen" type="text/css">
@@ -26,7 +26,7 @@
         Statement statement = conn.createStatement();
         ResultSet rs;
         rs= statement.executeQuery("SELECT productPic,productDesc,productSystem,productPrice FROM gaming.products WHERE productName='"+title+"'");
-        
+       
         while(rs.next()){%>
         <tr class="separating_line">
         	<td><img src="<%=rs.getString(1)%>" height="150" width="150" vspace="10"></td>
@@ -43,19 +43,14 @@
         <% } 
         %>
         <tr>
-        	<td><button id="addToCart" onClick="addToCart()" value="Add To Cart">Add To Cart</button></td>
-        	<td><label id="test"/>
+        	<td>
+        		<form action="addToCart" method="post">
+	        		<input  name="title" type="hidden" value="<%=request.getParameter("val")%>"/>
+	        		<button type="submit" value="AddToCart">Add To Cart</button>
+        		</form>
+        	</td>
         </tr>
 </table>       
 </section>
 </body>
-<script>
-function addToCart(){
-	ArrayList cartList = new ArrayList();
-	cartList = (ArrayList) session.getAttribute("cartItemArray");
-	cartList.add(title);
-	document.getElementById("test").set(cartList.toString());
-	session.setAttribute("cartItemArray", cartList);
-}
-</script>
 </html>

@@ -56,7 +56,7 @@ public class addItemServlet extends HttpServlet {
 			String pPrice = request.getParameter("productPrice");//get the Last Name from the last name field
 
 			Class.forName(driver).newInstance();
-			conn = (Connection) DriverManager.getConnection(url + dbName, "root", "Mat20134");//create a connection to the database
+			conn = (Connection) DriverManager.getConnection(url + dbName, "root", "yA600260");//create a connection to the database
 
 			PreparedStatement pst = (PreparedStatement)conn
 					.prepareStatement("INSERT INTO gaming.products(productName,productSystem,productInventory,productPrice) values('"

@@ -54,15 +54,9 @@
 			if(selected === 'fr'){<%session.setAttribute("language", "fr");%> alert("Changing to French...");}//changes the language session variable to french
 			else if(selected === 'en') {<%session.setAttribute("language", "en");%> alert("Changing to English...");}//changes the language session variable to english
 			location.reload();//reloads the page with the desired language
-			
-			
-			
 		});
 	});
 </script>
 <script>
-
 </script>
 </html>
-
-

@@ -30,7 +30,7 @@ public class LoginDao {
 		String dbName = "gaming"; // the database to execute the query on
 		String driver = "com.mysql.jdbc.Driver"; // the database driver used to connect to the database
 		String userName = "root"; // the database user name
-		String password = "Mat20134"; // the database password
+		String password = "12345"; // the database password
 
 		try {
 			Class.forName(driver).newInstance(); // create a new driver class instance
