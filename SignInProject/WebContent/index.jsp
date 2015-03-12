@@ -15,12 +15,13 @@
 		<span></span>
 		<h1>Member Login</h1>
 		<form action="loginServlet" method="post">
-		<fmt:message key="login.label.username" var="usernameLang" />
+		<fmt:message key="login.label.username" var="usernameLang" /> <!-- pulls the value of the username language key -->
 		<input type="text" name="username" required="required" placeholder="${usernameLang}" />
-		<fmt:message key="login.label.password" var="passwordLang" />
+		<fmt:message key="login.label.password" var="passwordLang" /><!-- pulls the value of the password language key -->
 		<input type="password" name="userpass" required="required" placeholder="${passwordLang}" />
-	    <fmt:message key="login.label.loginB" var="loginButton" />
+	    <fmt:message key="login.label.loginB" var="loginButton" /><!--  pulls the value of the login button language key -->
 		<button type="submit" value="${loginButton}" >${loginButton}</button>
+		<input type="hidden" id="hiddenLang" value="${language}" />
 			<%if(request.getAttribute("error") != null){ //If error attrubite exists, alert user to bad user/pw combo
 				out.print("<div class=\"error\">Sorry, username or password incorrect</div>");
 			} else{
@@ -36,7 +37,7 @@
 			<a href='#'>${forgotPass}</a>
 			<br /><br />
 			<fmt:message key="login.label.selectLang" var="Lang" />${Lang}&nbsp;
-			<select id="language" name="language" onchange="submit()">
+			<select id="language" name="language">
                 <option value="en" ${language == 'en' ? 'selected' : ''}>English</option> <!--  Selects English as the Language for the page -->
                 <option value="fr" ${language == 'fr' ? 'selected' : ''}>Français</option> <!--  Selects French as the Language for the page -->
             </select>
@@ -45,14 +46,17 @@
 </body>
 
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script type="text/javascript">
-	function submit(){
-		var selected = $('#language').find(":selected").val();
-		if(selected == "en") switchEn();
-		if(selected == "fr") switchFr();
-		location.reload();
-		
-		//need to make an AJAX call to set the session
-	}
+<script type="text/javascript">  
+	$(function () {
+		$("#language").change(function (){
+			var selected;
+			selected = $('#language').find(":selected").val();
+			if(selected === 'fr'){<%session.setAttribute("language", "fr");%> alert("Changing to French...");}//changes the language session variable to french
+			else if(selected === 'en') {<%session.setAttribute("language", "en");%> alert("Changing to English...");}//changes the language session variable to english
+			location.reload();//reloads the page with the desired language
+		});
+	});
+</script>
+<script>
 </script>
 </html>
