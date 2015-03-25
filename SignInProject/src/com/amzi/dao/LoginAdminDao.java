@@ -33,6 +33,7 @@ public class LoginAdminDao {
 		String userName = "root"; // the database user name
 		String password = "yA600260"; // the database password
 
+
 		try {
 			Class.forName(driver).newInstance(); // create a new driver class instance
 			conn = DriverManager.getConnection(url + dbName, userName, password); // connect to the database

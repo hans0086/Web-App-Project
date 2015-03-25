@@ -39,5 +39,4 @@ public class addToCart extends HttpServlet {
 		session.setAttribute("cartItemArray", cartList);
 		request.getRequestDispatcher("shoppingCart.jsp").forward(request, response);		
 	}
-
 }

@@ -5,6 +5,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Create Account</title>
 </head>
+
+<script src="jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">  
+          $(document).ready(function(){  
+              $(".uname").change(function(){  
+                  var uname = $(this).val();  
+                  if(uname.length >= 3){  
+                      $(".status").html("<img src='img/loader.gif'>");  
+                       $.ajax({  
+                          type: "POST",  
+                          url: "check",  
+                          data: "uname="+ uname,  
+                          success: function(msg){  
+                              $(".status").ajaxComplete(function(event, request, settings){  
+                                  $(".status").html(msg);  
+                              });  
+                          }  
+                      });   
+                  }  
+                  else{  
+                      $(".status").html("<font color=red>Username should be <b>3</b> character long.</font>");  
+                  }        
+              });  
+          });  
+</script>  
+
+
 <body>
     <section>
         <span></span>
@@ -25,6 +52,7 @@
             <button type="submit" value="Create Account">CREATE ACCOUNT</button>
         </form>
     </section>
+<<<<<<< HEAD
 </body>
 
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -53,3 +81,7 @@
           });  
     </script>
 </html>
+=======
+</body>  
+</html>
+>>>>>>> refs/remotes/origin/master

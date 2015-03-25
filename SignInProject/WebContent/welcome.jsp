@@ -9,8 +9,8 @@
 <section>
 <span></span>
 	<h1>User Login Successful</h1>
-    <h2>
-        Hello, <%=session.getAttribute("name")%>
+    <h2>
+        Hello, <%=session.getAttribute("name")%>
 	</h2>
 	<br />
 	<h2>

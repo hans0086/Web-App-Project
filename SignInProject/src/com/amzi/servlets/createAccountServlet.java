@@ -2,7 +2,8 @@ package com.amzi.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.DriverManager;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
+import com.security.Security;
 
 /**
  * Servlet implementation class createAccountServlet
@@ -51,7 +53,7 @@ public class createAccountServlet extends HttpServlet {
 
 		try {
 			String username = request.getParameter("username");
-			String userpass = request.getParameter("userpass");
+			String userpass = Security.hashPassword(request.getParameter("userpass"));
 			String firstName = request.getParameter("userFirstName");
 			String lastName = request.getParameter("userLastName");
 			String address = request.getParameter("userAddress");

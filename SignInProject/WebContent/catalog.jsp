@@ -24,7 +24,6 @@
            		</TR>
 		<%
 		try{
-
 		Class.forName("com.mysql.jdbc.Driver"); 
 		String url = "jdbc:mysql://localhost:3306/"; // the location of the database
 		String dbName = "gaming"; // the database to execute the query on
@@ -33,7 +32,6 @@
 		String password = "yA600260"; // the database password
 		//String searchQ =request.getParameter("searchAnchor");
 		Connection conn = DriverManager.getConnection(url + dbName, userName, password);
-
         Statement statement = conn.createStatement();
         ResultSet rs;
        
@@ -43,7 +41,6 @@
         
         
         rs = statement.executeQuery("SELECT productName, productSystem, productInventory, productPrice FROM gaming.products") ; 
-
         while(rs.next()){ %>
            <TR class="separating_line">
                <TD> <a href="chosenItem.jsp?val=<%= rs.getString(1) %>" onClick="openPopUp();return false;" id="<%=rs.getString(1)%>"><%=rs.getString(1)%></a> </TD><!--  outputs the entry in the 1st column -->

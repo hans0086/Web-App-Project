@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.amzi.dao.LoginAdminDao;
 import com.amzi.dao.LoginDao;
+import com.security.Security;
 
 public class LoginServlet extends HttpServlet {
 
@@ -23,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		String n = request.getParameter("username");
-		String p = request.getParameter("userpass");
+		String p = Security.hashPassword(request.getParameter("userpass"));
 		HttpSession session = request.getSession(false);
 		RequestDispatcher rd;
 		

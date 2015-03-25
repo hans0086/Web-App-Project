@@ -48,8 +48,6 @@ public class RemoveFromCart extends HttpServlet {
 			session.setAttribute("cart_count",--cart_count);
 			session.setAttribute("cartItemArray", cartList);			
 		}
-		
 		 request.getRequestDispatcher("shoppingCart.jsp").include(request, response);
 	}
-
 }
