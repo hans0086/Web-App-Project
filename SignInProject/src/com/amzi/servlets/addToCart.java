@@ -33,7 +33,9 @@ public class addToCart extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		ArrayList<String> cartList = new ArrayList<String>();
 		cartList = (ArrayList<String>) session.getAttribute("cartItemArray");
-		cartList.add(request.getParameter("title"));
+		int cart_count = (int)session.getAttribute("cart_count");
+		session.setAttribute("cart_count",++cart_count);
+		cartList.add(request.getParameter("title") + "_" + cart_count);
 		session.setAttribute("cartItemArray", cartList);
 		request.getRequestDispatcher("shoppingCart.jsp").forward(request, response);		
 	}

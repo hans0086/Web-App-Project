@@ -21,6 +21,8 @@
 	{
 		ArrayList<String> cartList = new ArrayList<String>();
 		session.setAttribute("cartItemArray",cartList); 
+		int cart_count = 0;
+		session.setAttribute("cart_count",cart_count);
 	}%>
 </section>
 </body>

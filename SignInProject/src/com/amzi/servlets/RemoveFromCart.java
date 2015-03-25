@@ -44,6 +44,8 @@ public class RemoveFromCart extends HttpServlet {
 					break;
 				}	
 			}
+			int cart_count = (int)session.getAttribute("cart_count");
+			session.setAttribute("cart_count",--cart_count);
 			session.setAttribute("cartItemArray", cartList);			
 		}
 		

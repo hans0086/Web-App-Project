@@ -1,19 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
     <%@ page import=" java.sql.*" import="java.util.*" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <link rel="stylesheet" href="css/style.css" media="screen" type="text/css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Your Shopping Cart</title>
+<title>Billing</title>
 </head>
+<body>
 <body>
 <section>
 <span></span>
-	<h1>Shopping Cart</h1>
-	<a href='catalog.jsp'>Return to Catalog</a>
+	<h1>Payment Information</h1>
 	<Table>
 		<%
 		try{
@@ -54,21 +52,17 @@
          for(int i = 0;i < cart.size();++i){
          if(cart.get(i).contains(rs.getString(2)))
          {%>
-        	<tr class="separating_line">
+        	<tr>
         		<td><img src="<%=rs.getString(1)%>" height="150" width="150" vspace="10"></td>
         		<td><%=rs.getString(2) %></td>
         		<td><%=rs.getString(3) %></td>
-        		<td>
-        			<form action="RemoveFromCart" method="post">
-        				<input name="cart_id" type="hidden" value="<%=cart.get(i)%>">
-        				<input type="submit" name="removeFromCart" value="Delete" />
-        			</form>
-        		</td>
         	</tr>
         <%sub_total += Double.parseDouble(rs.getString(3));}}}%>
        </Table>
-	   <b>Sub Total: </b><%=String.format("%1$,.2f", sub_total)%>
-	   <br /><a href='Billing.jsp'>Go To Checkout</a><%
+	   <b>Total: </b><%=String.format("%1$,.2f", sub_total)%>
+	   <br /><form action="checkoutServlet" method="post">
+        		<input type="submit" name="purchase" value="purchase" />
+        	 </form><%
        } catch(Exception e){}%>
 </section>
 </body>
