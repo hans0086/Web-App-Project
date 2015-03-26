@@ -51,14 +51,14 @@
             	<%}%>
             </select>
             <input type="text" name="securityCode" required="required" maxLength="3"/>
-            <input type="text" name="userFirstName" required="required" value=<%=rs.getString(1) %> />
-            <input type="text" name="userLastName" required="required" value=<%=rs.getString(2) %> />
+            <input type="text" name="userFirstName" required="required" value='<%=rs.getString(1) %>' />
+            <input type="text" name="userLastName" required="required" value='<%=rs.getString(2) %>' />
             <input type="text" name="userAddress" required="required" value='<%=rs.getString(3) %>' />
-            <input type="text" name="userCity" required="required" value=<%=rs.getString(4) %> />
-            <input type="text" name="userCountry" required="required" value=<%=rs.getString(5) %> />
-            <input type="text" name="userPostalCode" required="required" value=<%=rs.getString(6) %> />
-            <input type="text" name="userEmail" required="required" value=<%=rs.getString(7) %> />
-            <input type="text" name="userPhone" required="required" value=<%=rs.getString(8) %> />
+            <input type="text" name="userCity" required="required" value='<%=rs.getString(4) %>' />
+            <input type="text" name="userCountry" required="required" value='<%=rs.getString(5) %>' />
+            <input type="text" name="userPostalCode" required="required" value='<%=rs.getString(6) %>' />
+            <input type="text" name="userEmail" required="required" value='<%=rs.getString(7) %>' />
+            <input type="text" name="userPhone" required="required" value='<%=rs.getString(8) %>' />
             <button type="submit" value="ConFirm Billing">Continue</button>
         </form>
         <%} catch(Exception e){%> <h5><%=e.toString() %></h5> <% } %>

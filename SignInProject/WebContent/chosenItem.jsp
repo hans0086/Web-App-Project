@@ -12,6 +12,11 @@
 <section>
 <span></span>
 <b><%= request.getParameter("val") %></b>
+<%if(request.getAttribute("error") != null){ //If error attrubite exists, alert user to item out of stock
+	out.print("<div class=\"error\">Item is out of stock or current cart equals inventory</div>");
+} else{
+	out.print("<div class=\"error\"></div>");
+}%>
 <table>
 <% 
 	Class.forName("com.mysql.jdbc.Driver"); 

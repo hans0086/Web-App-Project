@@ -15,7 +15,7 @@
 	<Table>
 		<%
 		try{
-
+		/*create a database connection.*/
 		Class.forName("com.mysql.jdbc.Driver"); 
 		String url = "jdbc:mysql://localhost:3306/"; // the location of the database
 		String dbName = "gaming"; // the database to execute the query on
@@ -35,6 +35,7 @@
         	cartStatement = "SELECT productPic,productName, productPrice FROM gaming.products ";
  	    else
  	    	cartStatement = "";
+ 	    /*add the product names to select statement*/
         for(int i = 0;i < cart.size();++i)
         {
         	String product = cart.get(i).split("_")[0];
@@ -47,6 +48,7 @@
         	}
         }
         rs = statement.executeQuery(cartStatement);
+        /*create a entry into the table for each cart item*/
         while(rs.next())
         {
          for(int i = 0;i < cart.size();++i){

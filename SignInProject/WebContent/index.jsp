@@ -2,11 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
-<<<<<<< HEAD
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.labels.text" />
-<html lang="${language}">
-=======
 <%@ page session="true" %>
 <%
 String language =  request.getParameter("lang");
@@ -14,7 +9,6 @@ String language =  request.getParameter("lang");
 <fmt:setLocale value="<%=language%>" />
 <fmt:setBundle basename="com.labels.text" />
 <html lang="<%=request.getParameter("lang")%>">
->>>>>>> refs/remotes/origin/master
 <link rel="stylesheet" href="css/style.css" media="screen" type="text/css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -47,40 +41,13 @@ String language =  request.getParameter("lang");
 			<a href='#'>${forgotPass}</a>
 			<br /><br />
 			<fmt:message key="login.label.selectLang" var="Lang" />${Lang}&nbsp;
-<<<<<<< HEAD
-			<select id="language" name="language">
-                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option> <!--  Selects English as the Language for the page -->
-                <option value="fr" ${language == 'fr' ? 'selected' : ''}>Français</option> <!--  Selects French as the Language for the page -->
-=======
 			<select id="language" name="language" >
                 <option value="en" ${language == 'en' ? 'selected' : 'en'} >English</option> <!--  Selects English as the Language for the page -->
                 <option value="fr" ${language == 'fr' ? 'selected' : 'fr'} >Français</option> <!--  Selects French as the Language for the page -->
->>>>>>> refs/remotes/origin/master
             </select>
 		</h2>
 	</section>
 </body>
-<<<<<<< HEAD
-
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script type="text/javascript">  
-	$(function () {
-		$("#language").change(function (){
-			var selected;
-			selected = $('#language').find(":selected").val();
-			if(selected === 'fr'){<%session.setAttribute("language", "fr");%> alert("Changing to French...");}//changes the language session variable to french
-			else if(selected === 'en') {<%session.setAttribute("language", "en");%> alert("Changing to English...");}//changes the language session variable to english
-			location.reload();//reloads the page with the desired language
-		});
-	});
-</script>
-<script>
-
-</script>
-</html>
-
-
-=======
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">  
 	$(function () {
@@ -104,4 +71,3 @@ String language =  request.getParameter("lang");
 	});
 </script>
 </html>
->>>>>>> refs/remotes/origin/master

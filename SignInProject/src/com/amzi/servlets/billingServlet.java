@@ -31,6 +31,7 @@ public class billingServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
+		/*create billingInfo*/
 		Map<String,String> billingInfo = new HashMap<String,String>();
 		billingInfo.put("userFirstName",request.getParameter("userFirstName"));
 		billingInfo.put("userLastName",request.getParameter("userLastName"));

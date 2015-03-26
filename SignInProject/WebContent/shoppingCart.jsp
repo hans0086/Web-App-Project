@@ -67,7 +67,7 @@
         <%sub_total += Double.parseDouble(rs.getString(3));}}}%>
        </Table>
 	   <b>Sub Total: </b><%=String.format("%1$,.2f", sub_total)%>
-	   <br /><a href='Billing.jsp'>Go To Checkout</a><%
+	   <br /><a href='Billing.jsp'>Go To Checkout</a><%conn.close();
        } catch(Exception e){}%>
 </section>
 </body>
