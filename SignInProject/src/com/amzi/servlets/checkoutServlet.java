@@ -125,7 +125,7 @@ public class checkoutServlet extends HttpServlet {
 				MimeMessage message = new MimeMessage(emailSession);
 				message.setFrom(new InternetAddress("orders.gamingorders@gmail.com"));
 				message.addRecipient(Message.RecipientType.TO,
-						new InternetAddress("bryar.steven@gmail.com"));
+						new InternetAddress(billingInfo.get("userEmail")));
 				message.setSubject("DO NOT REPLY Order Recipt order NO: " + orderId);
 				message.setContent(emailContent,"text/html");
 				Transport.send(message);
@@ -133,11 +133,9 @@ public class checkoutServlet extends HttpServlet {
 			} catch (MessagingException e) {
 				e.printStackTrace();
 			}
-			/*
-			 * clear shopping cart
-			 * send email
-			 * redirect to order sent page
-			 * */
+			billingInfo.clear();/*clear the contents of the billingInfo*/
+			session.setAttribute("billingInfo",billingInfo);
+			request.getRequestDispatcher("OrderSent.jsp").forward(request, response);
 			conn.close();
 		} catch (Exception e) {
 		}
